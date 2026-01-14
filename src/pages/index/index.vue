@@ -164,7 +164,6 @@
       <view class="popup-content" @click.stop>
         <view class="popup-btn full-width">
           <text>“渝教工心”助需平台（点击此处发布）</text>
-          <text class="arrow-up">▲</text>
         </view>
         <view class="popup-grid">
           <view class="popup-item" @click="handlePublish('需求发布')">
