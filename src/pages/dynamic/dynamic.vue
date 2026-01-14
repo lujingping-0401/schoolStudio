@@ -113,9 +113,16 @@ const navigateTo = (url) => {
   z-index: 1;
 }
 
+.news-list {
+  padding: 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
 /* Search Section */
 .search-section {
-  margin-bottom: 28rpx;
+  margin-bottom: 30rpx;
 }
 
 .search-wrapper {
@@ -142,34 +149,36 @@ const navigateTo = (url) => {
 .news-item {
   display: flex;
   flex-direction: column;
-  margin-bottom: 40rpx;
-  border-radius: 24rpx;
+  margin-bottom: 30rpx;
+  border-radius: 10rpx;
   overflow: hidden;
   background-color: #fff;
-  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.03);
-  padding: 12rpx;
+  border: 1rpx solid #eee;
   animation: fadeIn 0.6s ease-out;
+}
+
+.news-item:last-child {
+  margin-bottom: 0;
 }
 
 .news-image {
   width: 100%;
-  height: 360rpx;
-  background-color: #f9fafb;
-  border-radius: 20rpx;
+  height: 300rpx;
+  background-color: #eee;
 }
 
 .news-content {
-  padding: 30rpx 16rpx 20rpx;
+  padding: 20rpx;
 }
 
 .news-title {
   font-family: 'DingTalk JinBuTi', sans-serif;
-  font-size: 36rpx;
+  font-size: 32rpx;
   display: block;
   font-weight: bold;
-  margin-bottom: 24rpx;
-  color: #1F2937;
-  line-height: 1.5;
+  margin-bottom: 15rpx;
+  color: #000;
+  line-height: 1.4;
 }
 
 .news-meta {
@@ -180,36 +189,35 @@ const navigateTo = (url) => {
 
 .news-tags {
   display: flex;
-  gap: 16rpx;
+  gap: 12rpx;
 }
 
 .tag {
   font-size: 24rpx;
-  padding: 8rpx 20rpx;
-  border-radius: 100rpx;
+  padding: 6rpx 24rpx;
+  border-radius: 30rpx;
   display: inline-block;
-  font-weight: 500;
 }
 
 .blue-tag {
-  background-color: #EBF5FF;
-  color: #3B82F6;
+  background-color: rgba(0, 122, 255, 0.08);
+  color: #007aff;
+  border: 1rpx solid #007aff;
 }
 
 .news-date-container {
   display: flex;
   align-items: center;
-  gap: 8rpx;
 }
 
 .calendar-icon {
   width: 28rpx;
   height: 28rpx;
-  opacity: 0.6;
+  margin-right: 8rpx;
 }
 
 .news-date {
-  color: #9CA3AF;
+  color: #999;
   font-size: 26rpx;
 }
 

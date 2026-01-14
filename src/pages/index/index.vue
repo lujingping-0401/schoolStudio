@@ -96,18 +96,22 @@
             :key="index"
             @click="navigateTo('/pages/technologyTransfer/technologyTransfer')"
           >
-            <view class="tech-title-row">
-              <text class="tech-title">{{ item.title }}</text>
+            <view class="tech-info">
+              <view class="tech-title-wrap">
+                <view class="tech-status-dot" :class="index % 2 === 0 ? 'status-blue' : 'status-orange'"></view>
+                <text class="tech-title">{{ item.title }}</text>
+              </view>
+              <view class="tech-tags">
+                <text
+                  class="tag"
+                  :class="getTagClass(tag)"
+                  v-for="(tag, tIndex) in item.tags"
+                  :key="tIndex"
+                  >{{ tag }}</text
+                >
+              </view>
             </view>
-            <view class="tech-tags">
-              <text
-                class="tag"
-                :class="getTagClass(tag)"
-                v-for="(tag, tIndex) in item.tags"
-                :key="tIndex"
-                >{{ tag }}</text
-              >
-            </view>
+            <u-icon name="arrow-right" color="#D1D5DB" size="16"></u-icon>
           </view>
         </view>
       </view>
@@ -486,29 +490,60 @@ const getTagClass = (tag) => {
 
 /* Tech List */
 .tech-item {
-  padding: 20rpx 0;
+  padding: 30rpx 0;
   border-bottom: 1rpx solid #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .tech-item:last-child {
   border-bottom: none;
 }
 
-.tech-title-row {
+.tech-info {
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.tech-title-wrap {
   display: flex;
   align-items: center;
-  margin-bottom: 15rpx;
+  margin-bottom: 16rpx;
+}
+
+.tech-status-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.status-blue {
+  background-color: #3b82f6;
+  box-shadow: 0 0 8rpx rgba(59, 130, 246, 0.4);
+}
+
+.status-orange {
+  background-color: #f59e0b;
+  box-shadow: 0 0 8rpx rgba(245, 158, 11, 0.4);
 }
 
 .tech-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #1f2937;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .tech-tags {
   display: flex;
-  gap: 15rpx;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  padding-left: 28rpx;
 }
 
 /* News List */

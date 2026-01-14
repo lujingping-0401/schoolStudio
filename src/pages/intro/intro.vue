@@ -194,11 +194,11 @@ const makeCall = (phoneNumber) => {
 
 .title-line {
   width: 6rpx;
-  height: 28rpx;
-  background-color: #3b82f6;
-  margin-right: 8rpx;
+  height: 24rpx;
+  background: linear-gradient(to bottom, #4facfe, #00f2fe);
+  margin-right: 12rpx;
   border-radius: 4rpx;
-  margin-top: 4rpx;
+
 }
 
 .card-title {

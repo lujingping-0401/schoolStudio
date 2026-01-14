@@ -142,9 +142,10 @@ const handleSubmit = () => {
 }
 
 .container {
-  min-height: 100vh;
+  height: 90vh;
   padding: 30rpx;
   position: relative;
+  overflow: hidden;
 }
 
 /* Global Background */
@@ -224,10 +225,10 @@ const handleSubmit = () => {
 }
 
 .title-line {
-  width: 6rpx;
-  height: 28rpx;
-  background-color: #3b82f6;
-  margin-right: 12rpx;
+  width: 8rpx;
+  height: 32rpx;
+  background: linear-gradient(to bottom, #4facfe, #00f2fe);
+  margin-right: 16rpx;
   border-radius: 4rpx;
 }
 
