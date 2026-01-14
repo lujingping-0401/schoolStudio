@@ -29,6 +29,18 @@
 			"style": {
 				"navigationBarTitleText": "问题资讯"
 			}
+		},
+		{
+			"path": "pages/technologyTransfer/technologyTransfer",
+			"style": {
+				"navigationBarTitleText": "需求详情"
+			}
+		},
+		{
+			"path": "pages/dynamic/compontes/dynamicDetail/dynamicDetail",
+			"style": {
+				"navigationBarTitleText": "工作动态详情"
+			}
 		}
 	],
 	"globalStyle": {

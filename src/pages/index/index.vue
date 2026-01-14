@@ -100,7 +100,7 @@
           <text class="more-link">更多</text>
         </view>
         <view class="tech-list">
-          <view class="tech-item" v-for="(item, index) in techList" :key="index">
+          <view class="tech-item" v-for="(item, index) in techList" :key="index" @click="navigateTo('/pages/technologyTransfer/technologyTransfer')">
             <view class="tech-title-row">
               <view class="tech-highlight" v-if="index < 3"></view>
               <text class="tech-title">{{ item.title }}</text>
@@ -119,7 +119,7 @@
           <text class="more-link">更多</text>
         </view>
         <view class="news-list">
-          <view class="news-item" v-for="(item, index) in newsList" :key="index" @click="navigateTo('/pages/dynamic/dynamic')">
+          <view class="news-item" v-for="(item, index) in newsList" :key="index" @click="navigateTo('/pages/dynamic/compontes/dynamicDetail/dynamicDetail')">
             <image :src="item.image" class="news-image" mode="aspectFill"></image>
             <view class="news-content">
               <text class="news-title">{{ item.title }}</text>

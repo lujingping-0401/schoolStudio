@@ -10,7 +10,7 @@
 
     <!-- News List -->
     <view class="news-list">
-      <view class="news-item" v-for="(item, index) in dynamics" :key="index">
+      <view class="news-item" v-for="(item, index) in dynamics" :key="index" @click="navigateTo('/pages/dynamic/compontes/dynamicDetail/dynamicDetail')">
         <image :src="item.image" class="news-image" mode="aspectFill"></image>
         <view class="news-content">
           <text class="news-title">{{ item.title }}</text>
@@ -67,6 +67,12 @@ const dynamics = ref([
     image: '/static/img/index/new4.png'
   }
 ]);
+
+const navigateTo = (url) => {
+  uni.navigateTo({
+    url: url
+  });
+};
 </script>
 
 <style lang="scss" scoped>
