@@ -1,63 +1,93 @@
 <template>
   <view class="container">
+    <view class="global-background"></view>
+    <view class="status-bar-placeholder"></view>
     <!-- Header Title -->
     <view class="header-section">
-       <view class="deco-line-left"></view>
-       <text class="page-title">工作室介绍</text>
-       <view class="deco-line-right"></view>
+       <view class="title-wrapper">
+         <view class="deco-dot"></view>
+         <text class="page-title">工作室介绍</text>
+         <view class="deco-dot"></view>
+       </view>
+       <text class="subtitle">Innovation & Transformation</text>
     </view>
 
     <view class="content-wrapper">
       <!-- Main Intro Text -->
-      <view class="intro-paragraph">
-        雷程亮成果转移转化创新工作室自2024年5月6日正式成立以来，始终以“推动科技成果向现实生产力转化”为核心使命，聚焦产业升级、创新驱动、企业一线的发展需求，充分发挥桥梁纽带作用，深耕技术赋能，助力区县企业提质增效；通过技术经纪（理）人才培育，不断构建可持续发展机制；深度链接高校院所、企业与职工群体，构建起“产学研用”一体化生态服务体系。
-      </view>
-
-      <!-- Diagram Image Placeholer -->
-      <view class="image-container">
-        <!-- User needs to add the actual chart image here. Using a placeholder or banner for layout. -->
-        <image src="/static/img/index/intrdouce.jpg" mode="widthFix" class="diagram-image"></image>
+      <view class="card intro-card">
+        <view class="card-header">
+          <view class="title-line"></view>
+          <text class="card-title">简介</text>
+        </view>
+        <view class="intro-paragraph">
+          雷程亮成果转移转化创新工作室自2024年5月6日正式成立以来，始终以“推动科技成果向现实生产力转化”为核心使命，聚焦产业升级、创新驱动、企业一线的发展需求，充分发挥桥梁纽带作用，深耕技术赋能，助力区县企业提质增效；通过技术经纪（理）人才培育，不断构建可持续发展机制；深度链接高校院所、企业与职工群体，构建起“产学研用”一体化生态服务体系。
+        </view>
+        <!-- Image Combined -->
+        <view class="image-section">
+          <image src="/static/img/index/intrdouce.jpg" mode="widthFix" class="diagram-image"></image>
+        </view>
       </view>
 
       <!-- Info Sections -->
-      <view class="info-list">
+      <view class="card info-card">
+        <view class="info-item">
+          <view class="label-row">
+            <u-icon name="account-fill" color="#3B82F6" size="18"></u-icon>
+            <text class="info-label">工作室领衔人</text>
+          </view>
+          <text class="info-content highlight">雷程亮</text>
+          <text class="info-desc">重庆市技术转移研究院有限公司董事长兼总经理</text>
+        </view>
         
-        <view class="info-item">
-          <text class="info-label">工作室领衔人：</text>
-          <text class="info-content">雷程亮 重庆市技术转移研究院有限公司董事长兼总经理</text>
-        </view>
+        <view class="divider"></view>
 
         <view class="info-item">
-          <text class="info-label">组织架构：</text>
-          <text class="info-content">概念验证服务工作小组</text>
-          <text class="info-content">转移转化服务工作小组</text>
+          <view class="label-row">
+            <u-icon name="grid-fill" color="#3B82F6" size="18"></u-icon>
+            <text class="info-label">组织架构</text>
+          </view>
+          <view class="tag-group">
+            <view class="tag">概念验证服务工作小组</view>
+            <view class="tag">转移转化服务工作小组</view>
+          </view>
         </view>
 
+        <view class="divider"></view>
+
         <view class="info-item">
-           <text class="info-label">核心职能：</text>
+           <view class="label-row">
+            <u-icon name="checkmark-circle-fill" color="#3B82F6" size="18"></u-icon>
+            <text class="info-label">核心职能</text>
+           </view>
            <text class="info-content">成果汇交、需求对接、成果转化。</text>
         </view>
-
-        <view class="info-item">
-           <text class="info-label">联系人：杨老师</text>
-           <text class="info-content">联系电话：17783262398</text>
-        </view>
-
       </view>
 
-       <!-- Bottom Contact Card -->
-      <view class="contact-card">
-         <view class="card-row">
-           <text class="card-label">联系人</text>
-           <text class="card-value name">侯建国</text>
-         </view>
-         <view class="card-row">
-           <text class="card-label">联系方式</text>
-           <view class="phone-wrap">
-             <u-icon name="phone" size="18" color="#333" class="phone-icon"></u-icon>
-             <text class="card-value">17399996666</text>
+       <!-- Contact Grid -->
+      <view class="contact-section">
+        <text class="section-header">联系我们</text>
+        <view class="contact-grid">
+           <!-- Contact 1 -->
+           <view class="contact-box" @click="makeCall('17783262398')">
+              <view class="contact-info">
+                 <text class="contact-name">杨老师</text>
+                 <text class="contact-role">工作室联系人</text>
+              </view>
+              <view class="call-btn">
+                 <u-icon name="phone-fill" color="#fff" size="14"></u-icon>
+              </view>
            </view>
-         </view>
+           <!-- Contact 2 -->
+           <view class="contact-box" @click="makeCall('17399996666')">
+              <view class="contact-info">
+                 <text class="contact-name">侯建国</text>
+                 <text class="contact-role">业务联系人</text>
+              </view>
+              <view class="call-btn">
+                 <u-icon name="phone-fill" color="#fff" size="14"></u-icon>
+              </view>
+           </view>
+        </view>
       </view>
 
     </view>
@@ -65,6 +95,11 @@
 </template>
 
 <script setup>
+const makeCall = (phoneNumber) => {
+  uni.makePhoneCall({
+    phoneNumber: phoneNumber
+  });
+};
 </script>
 
 <style lang="scss" scoped>
@@ -75,116 +110,252 @@
 
 .container {
   min-height: 100vh;
-  background-color: #edf2f5;
-  padding:12rpx 30rpx;
+  /* background-color: #F5F7FA; Removed to show background image */
+  padding: 2rpx 30rpx 30rpx;
+  padding-bottom: 60rpx;
+  position: relative; /* Ensure z-index works */
+}
+
+/* Global Background */
+.global-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/static/img/bgImg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* Header */
 .header-section {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20rpx;
+  margin: 28rpx 0 40rpx;
   position: relative;
+  z-index: 1;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
 }
 
 .page-title {
   font-family: 'DingTalk JinBuTi', sans-serif;
-  font-size: 40rpx;
-  font-weight: bold;
-  color: #000;
-  margin: 0 20rpx;
-  z-index: 1;
+  font-size: 48rpx;
+  color: #1F2937;
+  letter-spacing: 2rpx;
 }
 
-/* Decorative lines mimicking the tech style */
-.deco-line-left, .deco-line-right {
-    height: 4rpx;
-    width: 60rpx;
-    background: linear-gradient(to right, transparent, #007aff);
-    border-radius: 2rpx;
+.deco-dot {
+  width: 12rpx;
+  height: 12rpx;
+  background-color: #3B82F6;
+  border-radius: 50%;
+  opacity: 0.8;
 }
-.deco-line-right {
-    background: linear-gradient(to left, transparent, #007aff);
+
+.subtitle {
+  font-size: 20rpx;
+  color: #9CA3AF;
+  margin-top: 10rpx;
+  letter-spacing: 4rpx;
+  text-transform: uppercase;
 }
 
 .content-wrapper {
-  background-color: transparent;
+  animation: fadeIn 0.6s ease-out;
+  position: relative;
+  z-index: 1;
+}
+
+/* Common Card Styles */
+.card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.03);
+}
+
+.card-header {
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.title-line {
+  width: 6rpx;
+  height: 28rpx;
+  background-color: #3b82f6;
+  margin-right: 8rpx;
+  border-radius: 4rpx;
+  margin-top: 4rpx;
+}
+
+.card-title {
+  font-family: 'DingTalk JinBuTi', sans-serif;
+  font-size: 32rpx;
+  color: #1F2937;
 }
 
 .intro-paragraph {
-  color: #6b7280;
+  color: #4B5563;
   line-height: 1.8;
-  text-indent: 2em;
-  margin-bottom: 20rpx;
+  font-size: 28rpx;
   text-align: justify;
 }
 
-.image-container {
-  margin-bottom: 28rpx;
-  border-radius: 10rpx;
+/* Image */
+.image-section {
+  margin-top: 24rpx;
+  border-radius: 12rpx;
   overflow: hidden;
-  box-shadow: 0 4rpx 10rpx rgba(0,0,0,0.05);
+  box-shadow: 0 4rpx 10rpx rgba(0,0,0,0.05); /* Optional: slight shadow for the image itself */
 }
 
 .diagram-image {
-  height: 288rpx !important;
   width: 100%;
   display: block;
 }
 
-.info-list {
-  margin-bottom: 60rpx;
+/* Info List Card */
+.info-card {
+    padding-top: 40rpx;
+    padding-bottom: 40rpx;
 }
 
 .info-item {
-  margin-bottom: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.label-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 16rpx;
 }
 
 .info-label {
-  display: block;
-  font-size: 32rpx;
-  color: #333;
-  margin-bottom: 10rpx;
-  font-family: 'DingTalk JinBuTi', sans-serif; /* Consistent font usage */
+  font-family: 'DingTalk JinBuTi', sans-serif;
+  font-size: 30rpx;
+  color: #374151;
 }
 
 .info-content {
-  display: block;
-  color: #666;
+  color: #4B5563;
+  font-size: 28rpx;
   line-height: 1.6;
+  padding-left: 48rpx; 
 }
 
-/* Contact Card */
-.contact-card {
-  margin-top: 40rpx;
-  padding: 20rpx 0;
+.highlight {
+    font-weight: 600;
+    color: #111827;
+    font-size: 32rpx;
 }
 
-.card-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20rpx;
+.info-desc {
+    font-size: 24rpx;
+    color: #6B7280;
+    padding-left: 48rpx;
+    margin-top: 4rpx;
 }
 
-.card-label {
-  color: #333;
+.tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16rpx;
+    padding-left: 48rpx;
 }
 
-.card-value {
-  color: #333;
-  font-weight: 500;
+.tag {
+    background-color: #EBF5FF;
+    color: #3B82F6;
+    font-size: 24rpx;
+    padding: 8rpx 20rpx;
+    border-radius: 100rpx;
+    font-weight: 500;
 }
 
-.name {
-  font-weight: bold;
-  font-size: 34rpx;
+.divider {
+  height: 2rpx;
+  background-color: #F3F4F6;
+  margin: 30rpx 0;
 }
 
-.phone-wrap {
+/* Contact Section */
+.section-header {
+    font-family: 'DingTalk JinBuTi', sans-serif;
+    font-size: 34rpx;
+    color: #1F2937;
+    margin-bottom: 16rpx;
+    margin-left: 10rpx;
+    display: block;
+}
+
+.contact-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20rpx;
+}
+
+.contact-box {
+    flex: 1;
+    background: #ffffff;
+    padding: 24rpx;
+    border-radius: 20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.03);
+    transition: all 0.2s;
+}
+
+.contact-box:active {
+    transform: scale(0.98);
+    background-color: #F9FAFB;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-name {
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #1F2937;
+    margin-bottom: 4rpx;
+}
+
+.contact-role {
+    font-size: 22rpx;
+    color: #9CA3AF;
+}
+
+.call-btn {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #60A5FA, #3B82F6);
     display: flex;
     align-items: center;
-    gap: 10rpx;
+    justify-content: center;
+    box-shadow: 0 4rpx 12rpx rgba(59, 130, 246, 0.3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10rpx); }
+  to { opacity: 1; transform: translateY(0); }
 }
 </style>

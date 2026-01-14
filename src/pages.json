@@ -15,19 +15,22 @@
 		{
 			"path": "pages/intro/intro",
 			"style": {
-				"navigationBarTitleText": "工作室介绍"
+				"navigationBarTitleText": "工作室介绍",
+				"navigationBarBackgroundColor": "#fff"
 			}
 		},
 		{
 			"path": "pages/dynamic/dynamic",
 			"style": {
-				"navigationBarTitleText": "工作动态"
+				"navigationBarTitleText": "工作动态",
+				"navigationBarBackgroundColor": "#fff"
 			}
 		},
 		{
 			"path": "pages/question/question",
 			"style": {
-				"navigationBarTitleText": "问题资讯"
+				"navigationBarTitleText": "问题资讯",
+				"navigationBarBackgroundColor": "#fff"
 			}
 		},
 		{
@@ -39,7 +42,8 @@
 		{
 			"path": "pages/dynamic/compontes/dynamicDetail/dynamicDetail",
 			"style": {
-				"navigationBarTitleText": "工作动态详情"
+				"navigationBarTitleText": "工作动态详情",
+				"navigationBarBackgroundColor": "#fff"
 			}
 		}
 	],

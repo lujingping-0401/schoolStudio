@@ -5,7 +5,10 @@
 
     <!-- Search Bar -->
     <view class="search-section">
-      <u-search placeholder="请输入搜索内容" v-model="keyword" :show-action="false" shape="round" bg-color="#fff"></u-search>
+      <view class="search-wrapper">
+        <u-icon name="search" color="#9CA3AF" size="18" class="search-icon-manual"></u-icon>
+        <u-search placeholder="请输入搜索内容" v-model="keyword" :show-action="false" shape="round" bg-color="#fff" :search-icon="false"></u-search>
+      </view>
     </view>
 
     <!-- News List -->
@@ -83,7 +86,9 @@ const navigateTo = (url) => {
 
 .container {
   min-height: 100vh;
-  padding: 20rpx;
+  /* background-color: #F5F7FA; Removed to show background image */
+  padding: 30rpx;
+  padding-bottom: 60rpx;
   position: relative;
 }
 
@@ -104,46 +109,67 @@ const navigateTo = (url) => {
 
 /* Content needs z-index to sit above bg */
 .search-section, .news-list, .no-more {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
 /* Search Section */
 .search-section {
-  margin-bottom: 30rpx;
+  margin-bottom: 28rpx;
 }
 
-/* News List Styles - Copied & Adapted from Index */
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon-manual {
+  position: absolute;
+  left: 30rpx;
+  z-index: 10;
+}
+
+:deep(.u-search) {
+  flex: 1;
+}
+
+:deep(.u-search__content__input) {
+  padding-left: 36rpx !important;
+}
+
+/* News List Styles */
 .news-item {
   display: flex;
   flex-direction: column;
-  margin-bottom: 30rpx;
-  border-radius: 20rpx;
+  margin-bottom: 40rpx;
+  border-radius: 24rpx;
   overflow: hidden;
   background-color: #fff;
-  box-shadow: 0 4rpx 15rpx rgba(0,0,0,0.03);
-  padding: 10rpx; /* Slight inner padding for the image wrapper feel */
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.03);
+  padding: 12rpx;
+  animation: fadeIn 0.6s ease-out;
 }
 
 .news-image {
   width: 100%;
-  height: 340rpx;
-  background-color: #eee;
-  border-radius: 16rpx; /* Inner rounded corners for image */
+  height: 360rpx;
+  background-color: #f9fafb;
+  border-radius: 20rpx;
 }
 
 .news-content {
-  padding: 24rpx 14rpx 14rpx;
+  padding: 30rpx 16rpx 20rpx;
 }
 
 .news-title {
   font-family: 'DingTalk JinBuTi', sans-serif;
-  font-size: 34rpx;
+  font-size: 36rpx;
   display: block;
   font-weight: bold;
-  margin-bottom: 20rpx;
-  color: #000;
-  line-height: 1.4;
+  margin-bottom: 24rpx;
+  color: #1F2937;
+  line-height: 1.5;
 }
 
 .news-meta {
@@ -154,34 +180,36 @@ const navigateTo = (url) => {
 
 .news-tags {
   display: flex;
+  gap: 16rpx;
 }
 
 .tag {
   font-size: 24rpx;
-  padding: 6rpx 20rpx;
-  border-radius: 30rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 100rpx;
   display: inline-block;
-  margin-right: 15rpx;
+  font-weight: 500;
 }
 
 .blue-tag {
-  background-color: #e6f1ff;
-  color: #007aff;
+  background-color: #EBF5FF;
+  color: #3B82F6;
 }
 
 .news-date-container {
   display: flex;
   align-items: center;
+  gap: 8rpx;
 }
 
 .calendar-icon {
   width: 28rpx;
   height: 28rpx;
-  margin-right: 8rpx;
+  opacity: 0.6;
 }
 
 .news-date {
-  color: #999;
+  color: #9CA3AF;
   font-size: 26rpx;
 }
 
@@ -190,25 +218,27 @@ const navigateTo = (url) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40rpx 0;
-  position: relative;
+  padding: 60rpx 0;
 }
 
 .no-more-text {
   font-size: 24rpx;
-  color: #ccc;
-  background-color: transparent ; /* Matches container bg */
-  padding: 0 12rpx;
-  position: relative;
+  color: #9CA3AF;
+  padding: 0 20rpx;
+  background-color: transparent;
   z-index: 1;
 }
 
 .no-more-line {
   position: absolute;
-  height: 1px;
-  background-color: #e0e0e0;
-  width: 40%;
-  left: 30%;
+  height: 1rpx;
+  background-color: #E5E7EB;
+  width: 200rpx;
   z-index: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10rpx); }
+  to { opacity: 1; transform: translateY(0); }
 }
 </style>
