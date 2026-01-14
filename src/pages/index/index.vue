@@ -3,65 +3,157 @@
     <!-- Global Background -->
     <view class="global-background"></view>
 
-    <!-- Top Section -->
-    <view class="top-section">
-      <!-- Custom Header -->
-      <view class="custom-header" style="padding-top: 12rpx;">
-        <view class="header-content">
-          <view class="header-left">
-             <!-- Simple Home Icon using uView -->
-             <u-icon name="home" size="28" color="#333"></u-icon>
-          </view>
-          <text class="header-title">雷程亮成果转移转化创新工作室</text>
-          <!-- Spacer for right alignment balance or matching system capsule -->
-           <view class="header-right-spacer"></view>
+    <!-- Custom Header -->
+    <view class="custom-header" style="padding-top: 12rpx">
+      <view class="header-content">
+        <view class="header-left">
+          <image
+            src="/static/img/index/home.webp"
+            class="home-icon"
+            mode="widthFix"
+          ></image>
         </view>
+        <text class="header-title">重庆工业职业技术大学创新工作室</text>
+        <view class="header-right-spacer"></view>
       </view>
+    </view>
 
+    <!-- Scrollable Content Area -->
+    <view class="main-content">
       <!-- Banner -->
       <view class="banner-wrapper">
         <swiper class="banner-swiper" circular indicator-dots autoplay>
           <swiper-item>
-            <image class="banner-image" src="/static/img/index/banner1.jpg" mode="aspectFill"></image>
+            <image
+              class="banner-image"
+              src="/static/img/index/banner1.png"
+              mode="aspectFill"
+            ></image>
           </swiper-item>
           <swiper-item>
-            <image class="banner-image" src="/static/img/index/banner2.jpg" mode="aspectFill"></image>
+            <image
+              class="banner-image"
+              src="/static/img/index/banner2.jpg"
+              mode="aspectFill"
+            ></image>
           </swiper-item>
         </swiper>
       </view>
 
-      <!-- Floating Card Section (Action + Nav) -->
-      <view class="floating-card" :class="{ 'is-scrolled': isScrolled }">
-        <!-- Main Action Button -->
-        <view class="action-section">
-          <view class="action-btn" @click="togglePopup">
-            <text class="action-text">“渝教工心”助需平台（点击此处发布）</text>
-            <text class="arrow-down">▼</text>
-          </view>
-        </view>
-
+      <!-- Nav Card -->
+      <view class="card nav-card">
         <!-- Main Navigation Grid -->
         <view class="nav-grid">
           <view class="nav-item" @click="navigateTo('/pages/intro/intro')">
             <view class="icon-wrapper">
-               <image src="/static/img/index/WorkRoom.webp" class="nav-icon"></image>
-               <view class="icon-shadow"></view>
+              <image
+                src="/static/img/index/WorkRoom.webp"
+                class="nav-icon"
+              ></image>
             </view>
             <text>工作室介绍</text>
           </view>
           <view class="nav-item" @click="navigateTo('/pages/dynamic/dynamic')">
-             <view class="icon-wrapper">
-              <image src="/static/img/index/WorkUpdates.webp" class="nav-icon"></image>
-              <view class="icon-shadow"></view>
+            <view class="icon-wrapper">
+              <image
+                src="/static/img/index/WorkUpdates.webp"
+                class="nav-icon"
+              ></image>
             </view>
             <text>工作动态</text>
           </view>
-          <view class="nav-item" @click="navigateTo('/pages/question/question')">
-             <view class="icon-wrapper">
-              <image src="/static/img/index/FeeBack.webp" class="nav-icon"></image>
-              <view class="icon-shadow"></view>
+          <view class="nav-item" @click="togglePopup">
+            <view class="icon-wrapper">
+              <image src="/static/img/index/need.webp" class="nav-icon"></image>
+            </view>
+            <text>助需平台</text>
+          </view>
+          <view
+            class="nav-item"
+            @click="navigateTo('/pages/question/question')"
+          >
+            <view class="icon-wrapper">
+              <image
+                src="/static/img/index/FeeBack.webp"
+                class="nav-icon"
+              ></image>
             </view>
             <text>问题咨询</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- Tech Transfer Section -->
+      <view class="card section-card">
+        <view class="section-header">
+          <text class="section-title">成果转化</text>
+          <text class="more-link">更多</text>
+        </view>
+        <view class="tech-list">
+          <view
+            class="tech-item"
+            v-for="(item, index) in techList"
+            :key="index"
+            @click="navigateTo('/pages/technologyTransfer/technologyTransfer')"
+          >
+            <view class="tech-title-row">
+              <text class="tech-title">{{ item.title }}</text>
+            </view>
+            <view class="tech-tags">
+              <text
+                class="tag"
+                :class="getTagClass(tag)"
+                v-for="(tag, tIndex) in item.tags"
+                :key="tIndex"
+                >{{ tag }}</text
+              >
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- Work Dynamics Section -->
+      <view class="card section-card">
+        <view class="section-header">
+          <text class="section-title">工作动态</text>
+          <text class="more-link" @click="navigateTo('/pages/dynamic/dynamic')"
+            >更多</text
+          >
+        </view>
+        <view class="news-list">
+          <view
+            class="news-item"
+            v-for="(item, index) in newsList"
+            :key="index"
+            @click="
+              navigateTo('/pages/dynamic/compontes/dynamicDetail/dynamicDetail')
+            "
+          >
+            <image
+              :src="item.image"
+              class="news-image"
+              mode="aspectFill"
+            ></image>
+            <view class="news-content">
+              <text class="news-title">{{ item.title }}</text>
+              <view class="news-meta">
+                <view class="news-tags">
+                  <text
+                    class="tag blue-tag"
+                    v-for="(tag, tIndex) in item.tags"
+                    :key="tIndex"
+                    >{{ tag }}</text
+                  >
+                </view>
+                <view class="news-date-container">
+                  <image
+                    src="/static/img/index/calendar.svg"
+                    class="calendar-icon"
+                  ></image>
+                  <text class="news-date">{{ item.date }}</text>
+                </view>
+              </view>
+            </view>
           </view>
         </view>
       </view>
@@ -72,7 +164,7 @@
       <view class="popup-content" @click.stop>
         <view class="popup-btn full-width">
           <text>“渝教工心”助需平台（点击此处发布）</text>
-           <text class="arrow-up">▲</text>
+          <text class="arrow-up">▲</text>
         </view>
         <view class="popup-grid">
           <view class="popup-item" @click="handlePublish('需求发布')">
@@ -90,66 +182,13 @@
         </view>
       </view>
     </view>
-
-    <!-- White Content Section -->
-    <view class="white-section" :class="{ 'is-scrolled': isScrolled }">
-      <!-- Tech Transfer Section -->
-      <view class="sectionTop">
-        <view class="section-header">
-          <text class="section-title">成果转化</text>
-          <text class="more-link">更多</text>
-        </view>
-        <view class="tech-list">
-          <view class="tech-item" v-for="(item, index) in techList" :key="index" @click="navigateTo('/pages/technologyTransfer/technologyTransfer')">
-            <view class="tech-title-row">
-              <view class="tech-highlight" v-if="index < 3"></view>
-              <text class="tech-title">{{ item.title }}</text>
-            </view>
-            <view class="tech-tags">
-              <text class="tag" :class="getTagClass(tag)" v-for="(tag, tIndex) in item.tags" :key="tIndex">{{ tag }}</text>
-            </view>
-          </view>
-        </view>
-      </view>
-
-      <!-- Work Dynamics Section -->
-      <view class="sectionBtm">
-        <view class="section-header" style="margin-top: 20rpx;">
-          <text class="section-title">工作动态</text>
-          <text class="more-link">更多</text>
-        </view>
-        <view class="news-list">
-          <view class="news-item" v-for="(item, index) in newsList" :key="index" @click="navigateTo('/pages/dynamic/compontes/dynamicDetail/dynamicDetail')">
-            <image :src="item.image" class="news-image" mode="aspectFill"></image>
-            <view class="news-content">
-              <text class="news-title">{{ item.title }}</text>
-              <view class="news-meta">
-                <view class="news-tags">
-                  <text class="tag blue-tag" v-for="(tag, tIndex) in item.tags" :key="tIndex">{{ tag }}</text>
-                </view>
-                <view class="news-date-container">
-                  <image src="/static/img/index/calendar.svg" class="calendar-icon"></image>
-                  <text class="news-date">{{ item.date }}</text>
-                </view>
-              </view>
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
   </view>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { onLoad, onPageScroll } from '@dcloudio/uni-app';
-import uIcon from 'uview-plus/components/u-icon/u-icon.vue';
-
-const isScrolled = ref(false);
-
-onPageScroll((e) => {
-  isScrolled.value = e.scrollTop > 60; 
-});
+import { ref } from "vue";
+import { onLoad } from "@dcloudio/uni-app";
+import uIcon from "uview-plus/components/u-icon/u-icon.vue";
 
 const showPopup = ref(false);
 const statusBarHeight = ref(20);
@@ -160,38 +199,50 @@ onLoad(() => {
 });
 
 const techList = ref([
-  { title: '锂电池防火材料', tags: ['科技成果', '技术入股'] },
-  { title: '一种Li1+/Mg2+分离膜的研发', tags: ['技术需求', '现有技术/产品改进'] },
-  { title: '脉波交错层式结构在整流变压器绕制...', tags: ['技术需求', '新产品/技术研发'] },
-  { title: '高性能玄武岩混杂复合材料与结构关...', tags: ['技术需求', '引进技术'] },
-  { title: '青柠檬及橄榄油深加工产品开发', tags: ['技术需求', '现有技术/产品改进'] },
+  { title: "锂电池防火材料", tags: ["科技成果", "技术入股"] },
+  {
+    title: "一种Li1+/Mg2+分离膜的研发",
+    tags: ["技术需求", "现有技术/产品改进"],
+  },
+  {
+    title: "脉波交错层式结构在整流变压器绕制...",
+    tags: ["技术需求", "新产品/技术研发"],
+  },
+  {
+    title: "高性能玄武岩混杂复合材料与结构关...",
+    tags: ["技术需求", "引进技术"],
+  },
+  {
+    title: "青柠檬及橄榄油深加工产品开发",
+    tags: ["技术需求", "现有技术/产品改进"],
+  },
 ]);
 
 const newsList = ref([
   {
-    title: '首届武陵山人才节成功举办 武陵山科创中心助力区域科技成果转化',
-    date: '2025-10-24',
-    tags: ['活动聚会', '交流学习'],
-    image: '/static/img/index/new1.png'
+    title: "首届武陵山人才节成功举办 武陵山科创中心助力区域科技成果转化",
+    date: "2025-10-24",
+    tags: ["活动聚会", "交流学习"],
+    image: "/static/img/index/new1.png",
   },
   {
-    title: '成果智汇合川赋能科创企业',
-    date: '2025-10-22',
-    tags: ['活动聚会', '交流学习'],
-    image: '/static/img/index/new2.png'
+    title: "成果智汇合川赋能科创企业",
+    date: "2025-10-22",
+    tags: ["活动聚会", "交流学习"],
+    image: "/static/img/index/new2.png",
   },
   {
-    title: '环大学创新生态圈技术经理人经验分享沙龙在渝成功举办',
-    date: '2025-10-17',
-    tags: ['活动聚会', '交流学习'],
-    image: '/static/img/index/new3.png'
+    title: "环大学创新生态圈技术经理人经验分享沙龙在渝成功举办",
+    date: "2025-10-17",
+    tags: ["活动聚会", "交流学习"],
+    image: "/static/img/index/new3.png",
   },
   {
-    title: '汇聚发展合力 九龙坡区政协专题调研技术经理人队伍建设',
-    date: '2025-10-17',
-    tags: ['活动聚会', '交流学习'],
-    image: '/static/img/index/new4.png'
-  }
+    title: "汇聚发展合力 九龙坡区政协专题调研技术经理人队伍建设",
+    date: "2025-10-17",
+    tags: ["活动聚会", "交流学习"],
+    image: "/static/img/index/new4.png",
+  },
 ]);
 
 const togglePopup = () => {
@@ -200,36 +251,32 @@ const togglePopup = () => {
 
 const handlePublish = (type) => {
   uni.showToast({
-    title: '还没有开放',
-    icon: 'none'
+    title: "还没有开放",
+    icon: "none",
   });
 };
 
 const navigateTo = (url) => {
   uni.navigateTo({
-    url: url
+    url: url,
   });
 };
 
 const getTagClass = (tag) => {
-  if (tag === '科技成果' || tag === '活动聚会' || tag === '交流学习') return 'blue-tag';
-  if (tag === '技术入股') return 'blue-outline-tag';
-  if (tag === '技术需求') return 'orange-tag';
-  return 'orange-outline-tag';
+  return "orange-tag";
 };
 </script>
 
 <style lang="scss" scoped>
-/* Page Layout */
 @font-face {
-  font-family: 'DingTalk JinBuTi';
-  src: url('/static/font/钉钉进步体0111/DingTalk JinBuTi.ttf');
+  font-family: "DingTalk JinBuTi";
+  src: url("/static/font/钉钉进步体0111/DingTalk JinBuTi.ttf");
 }
 
 .container {
   min-height: 100vh;
-  padding: 0 10px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
+  /* Padding for safe areas if needed, but sticky header needs to be at top */
 }
 
 /* Global Background */
@@ -239,36 +286,18 @@ const getTagClass = (tag) => {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/static/img/bgImg.png');
+  background-image: url("/static/img/bgImg.png");
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.4;
   z-index: 0;
   pointer-events: none;
-  /* Ensure it covers everything */
-}
-
-/* Top Section */
-.top-section {
-  position: relative;
-  /* Removed local background logic */
-  z-index: 1;
-}
-
-/* Ensure content sits above the faint background */
-.custom-header, 
-.banner-wrapper, 
-.action-section, 
-.nav-grid {
-  position: relative;
-  z-index: 1;
 }
 
 /* Custom Header */
 .custom-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: relative;
+  padding: 0 10px;
 }
 
 .header-content {
@@ -278,28 +307,48 @@ const getTagClass = (tag) => {
 }
 
 .header-left {
-  width: 60rpx;
+  width: 80rpx; /* Increased to accommodate larger icon */
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.home-icon {
+  width: 64rpx; /* Slightly adjusted to fit better in the header height */
+  height: auto;
 }
 
 .header-title {
-  font-size: 38rpx;
-  font-weight: 500;
-  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 34rpx;
+  font-weight: 800; /* Extra bold for authority */
+  color: #1a1a1a;
+  letter-spacing: 2rpx;
 }
 
 .header-right-spacer {
-    width: 60rpx;
+  width: 60rpx;
+}
+
+/* Main Content Layout */
+.main-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  padding: 10rpx 20rpx 40rpx;
 }
 
 /* Banner */
 .banner-wrapper {
-  padding:16rpx 0;
+  width: 100%;
 }
 
 .banner-swiper {
-  height: 350rpx;
+  height: 320rpx;
   width: 100%;
   border-radius: 20rpx;
   overflow: hidden;
@@ -315,19 +364,17 @@ const getTagClass = (tag) => {
   height: 100%;
 }
 
-/* Floating Card */
-.floating-card {
+/* Cards Common Style */
+.card {
   background-color: #fff;
-  border-radius: 20rpx 20rpx 0 0; /* Default: Flat bottom to join with section below */
-  padding: 34rpx 20rpx 30rpx;
-  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.05);
-  position: relative;
-  z-index: 10;
-  transition: border-radius 0.3s ease, margin-bottom 0.3s ease;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
 }
 
-.floating-card.is-scrolled {
-  border-radius: 20rpx; /* Restore rounded bottom when scrolled */
+/* Nav Card specific */
+.nav-card {
+  padding-bottom: 30rpx;
 }
 
 /* Action Button */
@@ -347,13 +394,13 @@ const getTagClass = (tag) => {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4rpx 10rpx rgba(0, 122, 255, 0.3);
-  box-sizing: border-box; /* Ensure padding doesn't exceed 100% width */
+  box-sizing: border-box;
 }
 
 .action-text {
   font-size: 28rpx;
   font-weight: normal;
-  font-family: 'DingTalk JinBuTi', sans-serif;
+  font-family: "DingTalk JinBuTi", sans-serif;
 }
 
 .arrow-down {
@@ -365,89 +412,72 @@ const getTagClass = (tag) => {
 .nav-grid {
   display: flex;
   justify-content: space-around;
-  padding: 10rpx 0;
-  /* Transparent background to show the bgImg behind it if desired, 
-     but user said "ends at studio intro icon", suggesting the bgCOVERS this area. 
-     So we keep transparent here and let TopSection handle the bg. */
 }
 
 .nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  text{
+
+  text {
     font-size: 26rpx;
     color: #333;
-    font-family: 'DingTalk JinBuTi', sans-serif;
+    font-family: "DingTalk JinBuTi", sans-serif;
   }
 }
 
 .icon-wrapper {
-  position: relative;
+  width: 96rpx;
+  height: 96rpx;
+  background-color: #f8fbff;
+  border-radius: 16rpx;
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 10rpx;
+  margin-bottom: 12rpx;
 }
 
 .nav-icon {
-  width: 80rpx;
-  height: 80rpx;
+  width: 72rpx; /* Slightly smaller to fit background padding */
+  height: 72rpx;
   position: relative;
   z-index: 2;
 }
 
-.icon-shadow {
-  position: absolute;
-  bottom: -6rpx;
-  width: 60rpx;
-  height: 16rpx;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 70%);
-  border-radius: 50%;
-  z-index: 1;
-}
-
-/* White Section for content below */
-.white-section {
-    /* Removed background-color to let global background show */
-    border-radius: 20rpx 20rpx 0 0; 
-    position: relative;
-    z-index: 1;
-    padding-top: 0; /* Default 0 */
-    transition: padding-top 0.3s ease;
-}
-
-.white-section.is-scrolled {
-    padding-top: 24rpx;
-}
-
-.sectionTop{
-     padding: 20rpx 32rpx;
-    background-color: #fff;
-    border-radius: 0; /* Default 0 */
-    transition: border-radius 0.3s ease;
-}
-
-.white-section.is-scrolled .sectionTop {
-    border-radius: 20rpx 20rpx 0 0; /* Rounded when scrolled */
-}
-
+/* Section Header */
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12rpx 16rpx;
-  background-color: #fff;
+  padding-bottom: 20rpx;
+  /* Removed border-bottom per request "remove color in front of text" if that's interpreted as the line,
+     or if it meant a marker. I'll keep it clean. */
 }
 
 .section-title {
-  font-family: 'DingTalk JinBuTi', sans-serif;
+  font-family: "DingTalk JinBuTi", sans-serif;
   font-size: 34rpx;
   font-weight: bold;
-  font-style: italic; /* Added italic as seen in reference images usually */
-  border-bottom: 3px solid #007aff;
-  display: inline-block;
-  padding-bottom: 5px;
+  font-style: italic;
+  position: relative;
+  padding-left: 20rpx; /* Space for the vertical line */
+}
+
+/* Vertical Gradient Line */
+.section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8rpx;
+  height: 32rpx;
+  background: linear-gradient(
+    to bottom,
+    #4facfe,
+    #00f2fe
+  ); /* Light Blue Gradient */
+  border-radius: 4rpx;
 }
 
 .more-link {
@@ -458,28 +488,23 @@ const getTagClass = (tag) => {
 /* Tech List */
 .tech-item {
   padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.tech-item:last-child {
+  border-bottom: none;
 }
 
 .tech-title-row {
   display: flex;
   align-items: center;
-  margin-bottom: 10rpx;
-}
-
-.tech-highlight {
-    width: 60rpx;
-    height: 30rpx;
-    background: linear-gradient(to right, #00f2fe, #4facfe);
-    filter: blur(8px);
-    position: absolute;
-    opacity: 0.3;
+  margin-bottom: 15rpx;
 }
 
 .tech-title {
   font-size: 32rpx;
   font-weight: bold;
-  position: relative;
-  z-index: 1;
+  color: #333;
 }
 
 .tech-tags {
@@ -489,38 +514,48 @@ const getTagClass = (tag) => {
 
 /* News List */
 .news-item {
-  display: flex;
+  display: flex; /* Changed to row for better card look inside list? Or keep as column? Previous was column. */
+  /* User didn't specify changing news item layout, but said "overall layout uses flex elastic layout".
+     I'll keep specific item layout similar but cleaner. */
   flex-direction: column;
   margin-bottom: 30rpx;
   border-radius: 10rpx;
   overflow: hidden;
   background-color: #fff;
-  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
-  padding: 8rpx;
+  /* box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05); Already in a card, so maybe remove item shadow or keep it subtle? */
+  border: 1rpx solid #eee; /* Light border since it's inside a white card */
+}
+
+.news-item:last-child {
+  margin-bottom: 0;
 }
 
 .news-image {
   width: 100%;
   height: 300rpx;
   background-color: #eee;
-  border-radius: 10rpx;
 }
 
 .news-content {
-  padding: 15rpx;
+  padding: 20rpx;
 }
 
 .news-title {
   font-size: 32rpx;
   display: block;
   font-weight: bold;
-  margin-bottom: 10rpx;
+  margin-bottom: 15rpx;
 }
 
 .news-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.news-tags {
+  display: flex;
+  gap: 12rpx;
 }
 
 .news-date-container {
@@ -550,8 +585,7 @@ const getTagClass = (tag) => {
   z-index: 1000;
   display: flex;
   justify-content: center;
-  /* Align popup similar to main button position roughly */
-  padding-top: 450rpx; 
+  padding-top: 450rpx;
   align-items: flex-start;
 }
 
@@ -560,20 +594,20 @@ const getTagClass = (tag) => {
   width: 90%;
   border-radius: 20rpx;
   padding: 20rpx;
-  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.2);
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.2);
 }
 
 .popup-btn {
-    border: 2rpx solid #007aff;
-    border-radius: 10rpx;
-    padding: 15rpx;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #007aff;
-    font-weight: bold;
-    margin-bottom: 30rpx;
-    background-color: #fff;
+  border: 2rpx solid #007aff;
+  border-radius: 10rpx;
+  padding: 15rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #007aff;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+  background-color: #fff;
 }
 
 .arrow-up {
@@ -604,31 +638,32 @@ const getTagClass = (tag) => {
 .tag {
   font-size: 24rpx;
   padding: 6rpx 24rpx;
-  border-radius: 30rpx; /* Pill shape */
+  border-radius: 30rpx;
   display: inline-block;
-  margin-right: 15rpx;
+  margin-right: 0; /* Handled by gap */
 }
 
 .blue-tag {
-  background-color: #e6f1ff;
+  background-color: rgba(0, 122, 255, 0.08);
   color: #007aff;
+  border: 1rpx solid #007aff;
 }
 
 .blue-outline-tag {
   background-color: #fff;
   border: 1px solid #007aff;
   color: #007aff;
-  /* Adjust padding to account for border if needed to match height, roughly same */
 }
 
 .orange-tag {
-   background-color: #ffb400; /* Gold/Orange solid */
-   color: #333;
+  background-color: rgba(255, 149, 0, 0.08);
+  color: #ff9500;
+  border: 1rpx solid #ff9500;
 }
 
 .orange-outline-tag {
-    color: #ffb400;
-    border: 1px solid #ffb400;
-    background-color: #fff;
+  color: #ffb400;
+  border: 1px solid #ffb400;
+  background-color: #fff;
 }
 </style>
