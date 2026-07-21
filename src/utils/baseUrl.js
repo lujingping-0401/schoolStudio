@@ -57,6 +57,10 @@ export function getResourceUrl(url) {
 	const baseOrigin = baseMatch ? baseMatch[1] : "";
 	const basePath = baseMatch ? (baseMatch[2] || "") : base;
 
+	if (basePath !== "/api" && basePath.endsWith("/api") && /^\/api(?:\/|$)/.test(path)) {
+		return `${baseOrigin}${basePath}${path.slice(4)}`;
+	}
+
 	if (/^\/api(?:\/|$)/.test(basePath) && /^\/api(?:\/|$)/.test(path)) {
 		return `${baseOrigin}${path}`;
 	}
